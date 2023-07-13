@@ -5225,12 +5225,12 @@ export interface TypeChecker {
      * This function will _not_ return true if passed a type which
      * extends `Array` (for example, the TypeScript AST's `NodeArray` type).
      */
-    isArrayType(type: Type): boolean;
+    isArrayType(type: Type): type is TypeReference;
     /**
      * True if this type is a tuple type. This function will _not_ return true if
      * passed a type which extends from a tuple.
      */
-    isTupleType(type: Type): boolean;
+    isTupleType(type: Type): type is TupleTypeReference;
     /**
      * True if this type is assignable to `ReadonlyArray<any>`.
      */

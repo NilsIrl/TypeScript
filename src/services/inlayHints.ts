@@ -64,7 +64,6 @@ import {
     SymbolFlags,
     SyntaxKind,
     textSpanIntersectsWith,
-    TupleTypeReference,
     Type,
     TypeFormatFlags,
     unescapeLeadingUnderscores,
@@ -241,7 +240,7 @@ export function provideInlayHints(context: InlayHintsContext): InlayHint[] {
             if (isSpreadElement(arg)) {
                 const spreadType = checker.getTypeAtLocation(arg.expression);
                 if (checker.isTupleType(spreadType)) {
-                    const { elementFlags, fixedLength } = (spreadType as TupleTypeReference).target;
+                    const { elementFlags, fixedLength } = spreadType.target;
                     if (fixedLength === 0) {
                         continue;
                     }
